@@ -43,7 +43,7 @@ export default {
                 checked: e.target.checked,
             })
         },
-        clickDelete(){
+        clickDelete(todoId){
             this.$emit('click-delete', this.todo.id);
         }
     }
