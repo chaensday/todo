@@ -13,6 +13,7 @@
       v-for="todo in todos" 
       :key="todo.id"
       :todo="todo"  
+      @toggle-checkbox="toggleCheckbox"
     />
 
   </div>
@@ -45,6 +46,13 @@ export default {
         checked: false,
       });
       this,this.todoText='';
+    },
+    toggleCheckbox({id, checked}){
+      console.log(id, checked)
+      const index = this.todos.findIndex(todo => {
+        return todo.id === id;
+      });
+      this.todos[index].checked = checked;
     }
   }
 }

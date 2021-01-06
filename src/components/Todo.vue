@@ -1,8 +1,19 @@
 <template>
 
     <div>
-        <input type="checkbox" :checked="todo.checked">
-        <span class="ml-3 p-2">{{ todo.text }}</span>
+
+        <input type="checkbox" 
+        :checked="todo.checked" 
+        @change="toggleCheckbox"
+        >
+        
+        <span 
+            class="ml-3 p-2"
+            :class="todo.checked ? 'text-muted' : ''"
+            :style="todo.checked ? 'text-decoration : line-through' : ''"
+        >
+            {{ todo.text }}
+            </span>
 
     </div>
 </template>
@@ -14,6 +25,14 @@ export default {
             type: Object,
             required: true,
 
+        }
+    },
+    methods: {
+        toggleCheckbox(e){
+            this.$emit('toggle-checkbox', {
+                id: this.todo.id,
+                checked: e.target.checked,
+            })
         }
     }
 }
