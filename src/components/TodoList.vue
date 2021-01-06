@@ -17,15 +17,12 @@ export default {
     components:{
         Todo
     },
-    data(){
-
-    },
     props: {
         todos: {
-            type: {
+            
                 type: Array,
                 required: true,
-            }
+            
         }
     },
     methods: {

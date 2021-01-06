@@ -1,19 +1,21 @@
 <template>
   <div id="app" class="container">
-    <h1>Todo App</h1>
+    <h1 class="text-center">Todo App</h1>
    
-    <hr>
-
 <AddTodo 
   @add-todo="addTodo"
 />
+<CompletedTodo
+  :todos="todos"
+  />
 
+  <hr>
   <TodoList
     :todos="todos"
     @toggle-checkbox="toggleCheckbox"
     @click-delete="deleteTodo"
   />
-  {{todos}}
+  {{ todos }}
   </div>
 </template>
 
@@ -21,18 +23,22 @@
 
 import TodoList from '@/components/TodoList.vue';
 import AddTodo from '@/components/AddTodo.vue';
+import CompletedTodo from '@/components/CompletedTodo.vue';
+
 
 export default {
   components: {
     AddTodo,
     TodoList,
+    CompletedTodo
+
   },
   data(){
     return {
       todoText: '',
       todos: [
         { id: 1, text: 'buy a car', checked: false},
-        { id: 2, text: 'play game', checked: false},
+        { id: 2, text: 'play game', checked: false}
       ] 
     }
   },
@@ -43,19 +49,17 @@ export default {
             });
             this.todos.splice(index, 1);
         },
-    addTodo(e){
-      console.log(e);
-      console.log(e.target.value);
 
+    addTodo(value){ 
       this.todos.push({
         id: Math.random(),
-        text: e.target.value,
+        text: value,
         checked: false,
       });
-      this,this.todoText='';
+      this.todoText='';
     },
+
     toggleCheckbox({id, checked}){
-      console.log(id, checked)
       const index = this.todos.findIndex(todo => {
         return todo.id === id;
       });

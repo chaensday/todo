@@ -6,8 +6,6 @@
         :checked="todo.checked" 
         @change="toggleCheckbox"
         >
-     
-
 </div>
         
         <span 
@@ -17,11 +15,10 @@
         >
             {{ todo.text }}
             </span>
-            <button 
+        <button 
             class="btn btn-danger btn-sm"
             @click="clickDelete"
-            >
-                Delete</button>
+        >Delete</button>
 
     </div>
 </template>
@@ -37,13 +34,27 @@ export default {
     },
     methods: {
 
+        // deleteTodo(id){
+        //     const index = this.todos.findIndex(todo => {
+        //         return todo.id === id;
+        //     });
+        //     this.todos.splice(index,1);
+        // },
+        // addTodo(value){
+        //     this.todos.push({
+        //         id: Math.random(),
+        //         text: value,
+        //         checked: false
+        //     });
+        //     },
+
         toggleCheckbox(e){
             this.$emit('toggle-checkbox', {
                 id: this.todo.id,
                 checked: e.target.checked,
             })
         },
-        clickDelete(todoId){
+        clickDelete(){
             this.$emit('click-delete', this.todo.id);
         }
     }

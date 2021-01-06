@@ -5,7 +5,7 @@
       type="text" 
       class="w-100 p-2" 
       placeholder="Type todo"
-      @keyup.enter="addToDo"
+      @keyup.enter="addTodo"
     >
 </div>
   
@@ -20,6 +20,7 @@ export default {
     },
     methods: {
         addTodo(e) {
+            console.log(e.target.value)
             this.$emit('add-todo', e.target.value);
         }
     }
