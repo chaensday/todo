@@ -2,7 +2,7 @@
 
     <div>
         <input type="checkbox">
-        <span class="ml-3">Buy a car</span>
+        <span class="ml-3 p-2">Buy a car</span>
 
     </div>
 </template>
