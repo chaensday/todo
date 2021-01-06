@@ -1,8 +1,8 @@
 <template>
 
     <div>
-        <input type="checkbox">
-        <span class="ml-3 p-2">Buy a car</span>
+        <input type="checkbox" :checked="todo.checked">
+        <span class="ml-3 p-2">{{ todo.text }}</span>
 
     </div>
 </template>
