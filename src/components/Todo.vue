@@ -17,7 +17,11 @@
         >
             {{ todo.text }}
             </span>
-            <button class="btn btn-danger btn-sm">Delete</button>
+            <button 
+            class="btn btn-danger btn-sm"
+            @click="clickDelete"
+            >
+                Delete</button>
 
     </div>
 </template>
@@ -32,11 +36,15 @@ export default {
         }
     },
     methods: {
+
         toggleCheckbox(e){
             this.$emit('toggle-checkbox', {
                 id: this.todo.id,
                 checked: e.target.checked,
             })
+        },
+        clickDelete(){
+            this.$emit('click-delete', this.todo.id);
         }
     }
 }
