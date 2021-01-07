@@ -55,7 +55,9 @@ export default {
             })
         },
         clickDelete(){
-            this.$emit('click-delete', this.todo.id);
+            // this.$emit('click-delete', this.todo.id);
+            this.$store.commit('DELETE_TODO', this.todo.id);
+
         }
     }
 }
